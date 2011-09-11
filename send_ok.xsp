@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsp:page
+ language="java"
+ xmlns:xsp="http://apache.org/xsp"
+ xmlns:xsp-request="http://apache.org/xsp/request/2.0"
+ xmlns:sendmail="http://apache.org/cocoon/sendmail/1.0">
+
+<page>
+	<xsp:logic>
+		String strName = <xsp-request:get-parameter name="ingoa" />;
+		String strEmail = <xsp-request:get-parameter name="email" />;
+		String strPhone = <xsp-request:get-parameter name="phone" />;
+		String strPostal = <xsp-request:get-parameter name="postal" />;
+		String strSubject = <xsp-request:get-parameter name="subject" />;
+		String strComment = <xsp-request:get-parameter name="comment" />;
+	</xsp:logic>
+   	<title>Thank you</title>
+
+	<content>
+		<paragraph>Thank you for submitting this form. We value and appreciate your questions and comments about this website</paragraph>
+      	<list>
+			<label>Name: </label>
+			<response><xsp:expr>strName</xsp:expr></response>
+
+			<label>Email: </label>
+			<response><xsp:expr>strEmail</xsp:expr></response>
+
+			<label>Phone: </label>
+			<response><xsp:expr>strPhone</xsp:expr></response>
+
+			<label>Postal address: </label>
+			<response><xsp:expr>strPostal</xsp:expr></response>
+
+			<label>Subject: </label>
+			<response><xsp:expr>strSubject</xsp:expr></response>
+
+			<label>Comment/Question: </label>
+			<response><xsp:expr>strComment</xsp:expr></response>
+		</list>
+   	</content>
+
+   	<sendmail:send-mail>
+   	<sendmail:charset>ISO-8859-1</sendmail:charset>
+
+   	<!-- ================= -->
+   	<!-- Modify to | from -->
+   	<!-- ================= -->
+   	<sendmail:from>a@a.com</sendmail:from>
+   	<sendmail:to>b@b.com</sendmail:to>
+
+   	<!-- ================= -->
+   	<!-- Modify subject line -->
+   	<!-- ================= -->
+   	<sendmail:subject>Feedback</sendmail:subject>
+
+   	<!-- ================= -->
+   	<!-- Modify to point -->
+   	<!-- to your mail server -->
+   	<!-- ================= -->
+   	<sendmail:smtphost>127.0.0.1</sendmail:smtphost>
+
+   	<sendmail:body>
+Name: <xsp:expr>strName</xsp:expr>\r
+Email: <xsp:expr>strEmail</xsp:expr>\r
+Phone: <xsp:expr>strPhone</xsp:expr>\r\n\r\n
+Postal address: \r\n
+<xsp:expr>strPostal</xsp:expr>
+\r\n\r\nSubject: <xsp:expr>strSubject</xsp:expr>\r\n\r\n
+Comment / Question: \r\n
+<xsp:expr>strComment</xsp:expr>
+   	</sendmail:body>
+  	</sendmail:send-mail>
+
+</page>
+</xsp:page>

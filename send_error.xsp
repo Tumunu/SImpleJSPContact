@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsp:page
+ language="java"
+ xmlns:xsp="http://apache.org/xsp"
+ xmlns:xsp-request="http://apache.org/xsp/request/2.0"
+ xmlns:sendmail="http://apache.org/cocoon/sendmail/1.0">
+
+<page>
+  <title>Opps</title>
+    <content>
+      <paragraph>An error occured while processing the contact us form. Please go back and do it right.</paragraph>
+    </content>
+  </page>
+</xsp:page>

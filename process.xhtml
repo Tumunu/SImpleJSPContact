@@ -1,0 +1,18 @@
+<html xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:cinclude="http://apache.org/cocoon/include/1.0">
+
+  <head>
+    <title>Simple JSP Contact</title>
+    <link href="contactus.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <xi:include href="include/header.inc"/>
+
+    <div id="main">
+       <cinclude:include src="cocoon:/process.step2"/>
+    </div>
+
+
+    <xi:include href="include/footer.inc"/>
+  </body>
+</html>
